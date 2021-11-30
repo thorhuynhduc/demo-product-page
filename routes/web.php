@@ -21,6 +21,10 @@ Route::get('/home', function () {
     return view('home');
 });
 
+Route::get('/cart', function () {
+    return view('cart');
+});
+
 Route::prefix('product')->group(function () {
     Route::get('{productId}/detail', function () {
         return view('product.detail');
@@ -41,8 +45,10 @@ Route::prefix('management')->group(function () {
         Route::get('{productId}/edit', function () {
             return view('product.edit');
         });
-        Route::post('', function () {
-        });
+        Route::post('', function (\Illuminate\Http\Request $request) {
+            var_dump($request->all());
+            dd($request->file('files'));
+        })->name('product-edit-post');
         Route::put('{productId}', function () {
         });
         Route::delete('{productId}', function () {
