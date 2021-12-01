@@ -32,7 +32,7 @@ services:
       - demo
 
   app:
-    container_name: project
+    container_name: demo_product
     build:
       context: ./docker
     working_dir: /var/www/html/project
