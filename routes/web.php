@@ -13,66 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::namespace('Web')->group(function () {
+    Route::get('/', 'HomeController@index');
+    Route::get('/cart', 'HomeController@cart');
 
-Route::get('/home', function () {
-    return view('home');
-});
-
-Route::get('/cart', function () {
-    return view('cart');
-});
-
-Route::prefix('product')->group(function () {
-    Route::get('{productId}/detail', function () {
-        return view('product.detail');
-    });
-});
-
-Route::prefix('management')->group(function () {
-//    Route::middleware(['management'])->group(function () {
-//
-//    });
     Route::prefix('product')->group(function () {
-        Route::get('/', function () {
-            return view('product.list');
-        });
-        Route::get('create', function () {
-            return view('product.create');
-        });
-        Route::get('{productId}/edit', function () {
-            return view('product.edit');
-        });
-        Route::post('', function (\Illuminate\Http\Request $request) {
-            var_dump($request->all());
-            dd($request->file('files'));
-        })->name('product-edit-post');
-        Route::put('{productId}', function () {
-        });
-        Route::delete('{productId}', function () {
-        });
+        require __DIR__ . '/Web/product.php';
     });
-
     Route::prefix('brand')->group(function () {
-        Route::get('/', function () {
-            return view('brand.list');
-        });
-        Route::get('create', function () {
-            return view('brand.create');
-        });
-        Route::get('{brandId}/edit', function () {
-            return view('brand.edit');
-        });
-        Route::post('', function () {
-        });
-        Route::put('{brandId}', function () {
-        });
-        Route::delete('{brandId}', function () {
-        });
+        require __DIR__ . '/Web/brand.php';
+    });
+    Route::prefix('image')->group(function () {
+        require __DIR__ . '/Web/image.php';
     });
 });
-
-
-
