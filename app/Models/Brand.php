@@ -19,6 +19,7 @@ class Brand extends Model
         'id',
         'name',
         'description',
+        'available',
     ];
 
     /**

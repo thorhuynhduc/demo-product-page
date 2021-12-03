@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Product extends Model
+class Order extends Model
 {
     use SoftDeletes;
 
@@ -17,18 +17,18 @@ class Product extends Model
      */
     protected $fillable = [
         'id',
-        'brand_id',
-        'name',
-        'description',
-        'price',
+        'product_id',
+        'user_id',
+        'quantity',
+        'amount',
         'available',
     ];
 
     /**
      * @return HasMany
      */
-    public function images(): HasMany
+    public function products(): HasMany
     {
-        return $this->hasMany(Image::class);
+        return $this->hasMany(Product::class);
     }
 }

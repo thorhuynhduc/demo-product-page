@@ -9,9 +9,9 @@ use Aws\ResultInterface;
 use Aws\S3\ObjectUploader;
 use Aws\S3\S3Client;
 use Exception;
+use Illuminate\Support\Facades\Log;
 use League\Flysystem\AwsS3v3\AwsS3Adapter;
 use League\Flysystem\Filesystem;
-use Log;
 use Illuminate\Support\Facades\Storage;
 
 /**
