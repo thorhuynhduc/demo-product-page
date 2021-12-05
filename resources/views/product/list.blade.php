@@ -11,25 +11,43 @@
 <div class="container bg-light">
     <div class="row">
         <div class="col-12">
+            <a class="navbar-brand">Product list</a>
             <nav class="navbar navbar-light bg-light justify-content-end">
-                <form class="form-inline">
-                    <button class="btn btn-success my-2 my-sm-0" type="submit">Add</button>
-                </form>
+                <a href="{{ route('product-create') }}" class="btn btn-success my-2 my-sm-0" type="submit">Add new product</a>
             </nav>
         </div>
     </div>
     <div class="row">
         <div class="col-12">
             <nav class="navbar navbar-light bg-light justify-content-between">
-                <a class="navbar-brand">Product list</a>
-                <form class="form-inline">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
+                <div class="row">
+                    <div class="col-3">
+                        <label for="inputState">Brand:</label>
+                        <select id="brand_id" name="brand_id" class="form-control">
+                            <option selected>Choose...</option>
+                            <option>...</option>
+                        </select>
+                    </div>
+                    <div class="col-2">
+                        <label for="inputState">Price from:</label>
+                        <input type="number" class="form-control" name="price_from" id="price_from" placeholder="From">
+                    </div>
+                    <div class="col-2">
+                        <label for="inputState">Price to:</label>
+                        <input type="number" class="form-control" name="price_to" id="price_to" placeholder="To">
+                    </div>
+                    <div class="col-4">
+                        <label for="inputState">Name or Description:</label>
+                        <input class="form-control mr-sm-2" type="text" name="keyword" value="{{ isset($param['keyword']) ? $param['keyword'] : '' }}" placeholder="Search" aria-label="Search">
+                    </div>
+                    <div class="col-1" style="margin-top: 31px;">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search product</button>
+                    </div>
+                </div>
             </nav>
         </div>
     </div>
-    <div class="row">
+    <div class="row mt-3">
         <div class="col-12">
             <div class="table-responsive">
                 <table class="table table-bordered">
@@ -43,36 +61,18 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>
-                            <button type="button" class="btn btn-primary btn-sm"><i class="far fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        <td>
-                            <button type="button" class="btn btn-primary btn-sm"><i class="far fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                        <td>
-                            <button type="button" class="btn btn-primary btn-sm"><i class="far fa-edit"></i></button>
-                            <button type="button" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
-                        </td>
-                    </tr>
+                    @foreach($products as $product)
+                        <tr>
+                            <th scope="row">{{ $product->id }}</th>
+                            <td>{{ $product->name }}</td>
+                            <td>{{ $product->description }}</td>
+                            <td>{{ $product->price }}</td>
+                            <td>
+                                <a href="{{ route('product-detail', ['productId' => $product->id]) }}" class="btn btn-primary btn-sm"><i class="far fa-edit"></i></a>
+                                <button type="button" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
+                            </td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
 
@@ -80,26 +80,8 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-12">
-            <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-end">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+        <div class="col-12 d-flex justify-content-end">
+            {!! $products->links() !!}
         </div>
     </div>
 </div>

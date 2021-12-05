@@ -11,5 +11,17 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+mix.autoload({
+  jquery: ['$', 'jQuery', 'window.jQuery'],
+});
+
+mix
+  .copyDirectory('resources/images', 'public/images')
+  .js('resources/js/app.js', 'public/js')
+  .js('resources/js/lib/jquery-validation.js', 'public/js/lib')
+  .js('resources/js/product/index.js', 'public/js/product')
+  .js('resources/js/product/create.js', 'public/js/product')
+  .js('resources/js/product/update.js', 'public/js/product')
+  .sass('resources/sass/app.scss', 'public/css')
+  .version()
+  .sourceMaps();

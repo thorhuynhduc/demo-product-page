@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/welcome', function () {
+    return view('welcome');
+});
+
 Route::namespace('Web')->group(function () {
     Route::get('/', 'HomeController@index');
     Route::get('/cart', 'HomeController@cart');

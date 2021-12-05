@@ -2,8 +2,6 @@
 
 namespace App\Criteria;
 
-use Illuminate\Database\Query\Builder;
-
 class ProductCriteria extends Criteria
 {
     protected array $criteria = [
@@ -15,19 +13,19 @@ class ProductCriteria extends Criteria
         'keyword',
     ];
 
-    protected function criteriaName(Builder $query, $value)
+    protected function criteriaName($query, $value)
     {
         $query->where('name', 'like', "%$value%")
             ->orWhere('name', 'like', "%".strtolower($value)."%");
     }
 
-    protected function criteriaDescription(Builder $query, $value)
+    protected function criteriaDescription($query, $value)
     {
         $query->where('description', 'like', "%$value%")
             ->orWhere('description', 'like', "%".strtolower($value)."%");
     }
 
-    protected function criteriaKeyword(Builder $query, $value)
+    protected function criteriaKeyword($query, $value)
     {
         $query->where('name', 'like', "%$value%")
             ->orWhere('description', 'like', "%$value%")

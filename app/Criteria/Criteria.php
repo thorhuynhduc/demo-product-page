@@ -3,7 +3,7 @@
 namespace App\Criteria;
 
 use Closure;
-use Illuminate\Database\Query\Builder;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 
 abstract class Criteria
