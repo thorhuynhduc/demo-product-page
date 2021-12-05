@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enum\Role;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -16,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'is_admin'
     ];
 
     /**
@@ -43,5 +44,10 @@ class User extends Authenticatable
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->is_admin == Role::ADMIN;
     }
 }

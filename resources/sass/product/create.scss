@@ -1,0 +1,43 @@
+.error {color: red;}
+
+.img-preview {
+  width: 180px;
+  margin-left: 5px;
+  margin-bottom: 8px;
+}
+
+.form-inline .form-control.custom-file-upload {
+  border: 1px solid #ccc;
+
+  padding: 6px 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.file-upload {
+  height: 30px !important;
+  width: 130px !important;
+}
+
+.wrap-input-container {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  height: 40px;
+  margin-top: 2px;
+}
+.wrap-input-container input {
+  position: absolute;
+  font-size: 400px;
+  opacity: 0;
+  z-index: 1;
+  top: 0;
+  left: 0;
+}
+
+input[type="file"] {
+  display: block;
+}

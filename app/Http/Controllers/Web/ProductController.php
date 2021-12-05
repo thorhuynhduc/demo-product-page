@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Web;
 
 use App\Criteria\ProductCriteria;
+use App\Enum\Pagination;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\CreateProductRequest;
 use App\Http\Requests\Product\UpdateProductRequest;
+use App\Models\Brand;
 use App\Models\Image;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -17,17 +19,37 @@ class ProductController extends Controller
         $param = $request->all();
 
         $query = Product::query();
-
         (new ProductCriteria($param))->apply($query);
+        $query->with(['brand']);
 
-        $products = $query->paginate(5);
+        $products = $query->paginate(Pagination::PER_PAGE_DEFAULT);
+        $brands   = Brand::all();
 
-        return view('product.list', compact('products', 'param'));
+        return view('product.list', compact('products', 'param', 'brands'));
     }
 
-    public function create(Request $request)
+    public function search(Request $request)
     {
-        return view('product.create');
+        $param    = $request->all();
+        $sortBy   = $param['sort_by'] ?? 'created_at';
+        $sortType = $param['sort_type'] ?? 'desc';
+
+        $query = Product::query();
+
+        (new ProductCriteria($param))->apply($query);
+        $query->with(['images']);
+        $query->orderBy($sortBy, $sortType);
+
+        $products = $query->paginate(Pagination::PER_PAGE_DEFAULT);
+
+        return $this->responseOk($products);
+    }
+
+    public function create()
+    {
+        $brands = Brand::all();
+
+        return view('product.create', compact('brands'));
     }
 
     public function store(CreateProductRequest $request)
@@ -36,10 +58,11 @@ class ProductController extends Controller
             'brand_id',
             'name',
             'description',
+            'delivery',
+            'warranty_information',
             'price'
         ]);
 
-        $data['brand_id']  = 1;
         $data['available'] = true;
 
         $product = Product::create($data);
@@ -60,18 +83,12 @@ class ProductController extends Controller
         return $this->responseOk($product);
     }
 
-    public function detail($productId)
-    {
-        $product = Product::findOrFail($productId);
-
-        return view('product.detail', ['product' => $product->load('images')]);
-    }
-
     public function edit($productId, Request $request)
     {
         $product = Product::findOrFail($productId);
+        $brands  = Brand::all();
 
-        return view('product.edit', ['product' => $product->load('images')]);
+        return view('product.edit', ['product' => $product->load('images', 'brand'), 'brands' => $brands]);
     }
 
     public function update($productId, UpdateProductRequest $request)
@@ -80,15 +97,20 @@ class ProductController extends Controller
             'brand_id',
             'name',
             'description',
+            'delivery',
+            'warranty_information',
             'price',
             'images_old',
         ]);
 
         $product = Product::findOrFail($productId);
 
-        $product->name        = $data['name'];
-        $product->description = $data['description'];
-        $product->price       = $data['price'];
+        $product->name                 = $data['name'];
+        $product->brand_id             = $data['brand_id'];
+        $product->description          = $data['description'];
+        $product->delivery             = $data['delivery'];
+        $product->warranty_information = $data['warranty_information'];
+        $product->price                = $data['price'];
         $product->save();
 
         if (!empty($data['images_old'])) {
@@ -115,6 +137,10 @@ class ProductController extends Controller
 
     public function delete($productId)
     {
-        return view('product.edit');
+        $product = Product::findOrFail($productId);
+
+        $product->delete();
+
+        return $this->responseOk(true);
     }
 }

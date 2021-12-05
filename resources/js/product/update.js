@@ -37,7 +37,10 @@ $('#updateProduct').validate({
     formData.append("_method", "PUT")
     formData.append("_token", _token)
     formData.append("name", $('#name').val())
+    formData.append("brand_id", $('#brand_id').val())
     formData.append("description", $('#description').val())
+    formData.append("delivery", $('#delivery').val())
+    formData.append("warranty_information", $('#warranty_information').val())
     formData.append("price", $('#price').val())
 
     _.forEach($('.file-upload'), function (fileElement) {
@@ -58,8 +61,8 @@ $('#updateProduct').validate({
       .then(function (response) {
         if (response.status) {
           showSuccess('Edit product success', () => {
-            console.log(121313)
-          })
+            window.location.href = `${appDomainUrl}/product`
+          }, 500)
         }
       })
       .catch(function (errors) {

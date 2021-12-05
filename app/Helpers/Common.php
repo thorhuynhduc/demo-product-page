@@ -2,10 +2,6 @@
 
 namespace App\Helpers;
 
-use Auth;
-use Carbon\Carbon;
-use Jenssegers\Agent\Agent;
-
 /**
  * Class Common.
  *
@@ -15,16 +11,14 @@ class Common
 {
     public static function randomString($type = 'alnum', $len = 8)
     {
-        switch ($type)
-        {
+        switch ($type) {
             case 'basic':
                 return mt_rand();
             case 'alnum':
             case 'numeric':
             case 'nozero':
             case 'alpha':
-                switch ($type)
-                {
+                switch ($type) {
                     case 'alpha':
                         $pool = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
                         break;
@@ -44,80 +38,31 @@ class Common
                 return md5(uniqid(mt_rand()));
             case 'encrypt': // todo: remove in 3.1+
             case 'sha1':
-                return sha1(uniqid(mt_rand(), TRUE));
+                return sha1(uniqid(mt_rand(), true));
         }
     }
 
-    public static function currentUser()
+    public static function removeSpecialChar($str)
     {
-        return Auth::guard('api')->user();
+        return str_replace(['\'', '"', ',', ';', '<', '>', '.', ' ', '/', ')', '('], '', $str);
     }
 
-    /**
-     * @return bool|int|null
-     */
-    public static function isIosDevice()
+    public static function getCartKey($userAgent): string
     {
-        $agent = new Agent();
+        $userUrgent = Common::removeSpecialChar(trim($userAgent));
 
-        return $agent->is('iOS');
+        return "cart_{$userUrgent}";
     }
 
-    public static function replaceHideString($string, $lengthStartHide = 2)
+    public static function getSumPriceCart($cart): string
     {
-        if (strlen($string) == 3) {
-            return self::mb_substr_replace($string, "*", 1, 1);
+        $sum = 0;
+        if (!empty($cart)) {
+            foreach ($cart as $cartItem) {
+                $sum = $sum + ($cartItem['quantity'] * $cartItem['price']);
+            }
         }
 
-        $lengthString = strlen($string);
-        $lengthReplaceStart = (int) $lengthStartHide;
-        $lengthReplace = ($lengthString - $lengthStartHide);
-
-        if ($lengthReplace > 10) {
-            $lengthReplace = 10;
-        }
-
-        return self::mb_substr_replace($string, str_repeat("*", $lengthReplace), $lengthReplaceStart, $lengthString);
-    }
-
-    public static function mb_substr_replace($original, $replacement, $position, $length)
-    {
-        $startString = mb_substr($original, 0, $position, "UTF-8");
-        $endString = mb_substr($original, $position + $length, mb_strlen($original), "UTF-8");
-
-        $out = $startString . $replacement . $endString;
-
-        return $out;
-    }
-
-    public static function replaceHideUserName($string)
-    {
-        if (strlen($string) <= 10) {
-            return self::mb_substr_replace($string, "*", 1, 1);
-        }
-
-        return self::replaceHideString($string, 1);
-    }
-
-    public static function generateThreadKey(array $params, int|null $productId): string
-    {
-        sort($params);
-
-        if ($productId) {
-            array_push($params, $productId);
-        }
-
-        return join("_", $params);
-    }
-
-    public static function convertTimeKoreaToUtc($dateTimeKorea): ?string
-    {
-        if (empty($dateTimeKorea)) {
-            return null;
-        }
-
-        $date = Carbon::createFromFormat('Y-m-d H:i:s', $dateTimeKorea, 'Asia/Seoul');
-        $date->setTimezone('UTC');
-        return $date->format('Y-m-d H:i:s');
+        return $sum;
     }
 }

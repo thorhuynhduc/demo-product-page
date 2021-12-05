@@ -1,0 +1,299 @@
+body{margin-top:20px;}
+
+
+.shop-index-features__heading + p {
+  color: #777777;
+}
+/* Blog post */
+.shop-index-blog__posts > [class*="col-"] {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+}
+.shop-index-blog__posts > [class*="col-"]:last-child {
+  border-right: 0;
+}
+
+.shop-index-blog__img > img {
+  height: 100%;
+  width: auto;
+}
+
+@media (max-width: 991px) {
+}
+@media (max-width: 767px) {
+  .shop-index-blog__posts > [class*="col-"] {
+    padding-top: 0;
+    padding-bottom: 60px;
+    border-right: 0;
+  }
+  .shop-index-blog__posts > [class*="col-"]:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.shop-index__newsletter input[type="email"] {
+  height: 42px;
+  padding: 11px 12px;
+}
+.shop-index__newsletter button[type="submit"] {
+  padding: 11px 30px;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .shop-index__newsletter input[type="email"] {
+    border-radius: 21px 0 0 21px;
+  }
+  .shop-index__newsletter button[type="submit"] {
+    margin-left: -3px;
+    border-radius: 0 21px 21px 0;
+    width: auto;
+  }
+}
+/** Shop: Thumbnails **/
+.shop__thumb {
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: white;
+  text-align: center;
+  -webkit-transition: border-color 0.1s, -webkit-box-shadow 0.1s;
+  -o-transition: border-color 0.1s, box-shadow 0.1s;
+  transition: border-color 0.1s, box-shadow 0.1s;
+}
+.shop__thumb:hover {
+  border-color: rgba(0, 0, 0, 0.07);
+  -webkit-box-shadow: 0 5px 30px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.07);
+}
+.shop__thumb > a {
+  color: #333333;
+}
+.shop__thumb > a:hover {
+  text-decoration: none;
+}
+.shop-thumb__img {
+  position: relative;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.shop-thumb__title {
+  font-weight: 600;
+}
+.shop-thumb__price {
+  color: #777777;
+}
+.shop-thumb-price_old {
+  text-decoration: line-through;
+}
+.shop-thumb-price_new {
+  color: red;
+}
+
+.shop-item__add button[type="submit"] {
+  padding: 15px 20px;
+}
+
+@media (max-width: 767px) {
+
+}
+/** Shop: Filter **/
+.shop__filter {
+  margin-bottom: 40px;
+}
+.shop-filter__price [class*='col-'] {
+  padding: 2px;
+}
+
+.shop-filter__color input[type="text"] {
+  display: none;
+}
+.shop-filter__color label {
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  cursor: pointer;
+}
+/** Shop: Sorting **/
+.shop__sorting {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 40px;
+  margin-top: -20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: right;
+}
+.shop__sorting > li {
+  display: inline-block;
+}
+.shop__sorting > li > a {
+  display: block;
+  padding: 20px 10px;
+  margin-bottom: -1px;
+  border-bottom: 2px solid transparent;
+  color: #757575;
+  -webkit-transition: all .05s linear;
+  -o-transition: all .05s linear;
+  transition: all .05s linear;
+}
+.shop__sorting > li > a:hover,
+.shop__sorting > li > a:focus {
+  color: #333333;
+  text-decoration: none;
+}
+.shop__sorting > li.active > a {
+  color: #ed3e49;
+  border-bottom-color: #ed3e49;
+}
+@media (max-width: 767px) {
+  .shop__sorting {
+    text-align: left;
+    border-bottom: 0;
+  }
+  .shop__sorting > li {
+    display: block;
+  }
+  .shop__sorting > li > a {
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .shop__sorting > li.active > a {
+    font-weight: 600;
+  }
+}
+
+.checkout-total__block > .row > [class*="col-"] {
+  padding: 40px 40px;
+  border-right: 1px solid #e9e9e9;
+  color: #aaa;
+}
+.checkout-total__block > .row > [class*="col-"]:last-child {
+  border-right: 0;
+  color: #333333;
+}
+@media (max-width: 767px) {
+
+  .checkout-total__block > .row > [class*="col-"] {
+    padding: 15px 20px;
+    border: 0;
+    border-top: 1px solid #e9e9e9;
+  }
+  .checkout-total__block > .row > [class*="col-"]:last-child {
+    border-bottom: 1px solid #e9e9e9;
+  }
+}
+
+.shop-conf__heading + p {
+  margin-bottom: 100px;
+}
+
+
+/**
+ * Forms
+ */
+.form-control,
+.form-control:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: none;
+}
+/* Checkboxes */
+.checkbox input[type="checkbox"] {
+  display: none;
+}
+.checkbox label {
+  padding-left: 0;
+}
+.checkbox label:before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 15px;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  background-color: #eee;
+  text-align: center;
+  font-family: "FontAwesome";
+}
+.checkbox input[type="checkbox"]:checked + label::before {
+  content: "\f00c";
+}
+/* Radios */
+.radio input[type="radio"] {
+  display: none;
+}
+.radio label {
+  padding-left: 0;
+}
+.radio label:before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 15px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 10px solid #eee;
+  background-color: #333333;
+}
+.radio input[type="radio"]:checked + label:before {
+  border-width: 7px;
+}
+.input_qty input[type="text"] {
+  display: none;
+}
+.input_qty label {
+  width: 100%;
+  height: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  line-height: 40px;
+  text-align: center;
+}
+.input_qty label > span:not(.output) {
+  width: 40px;
+  height: 40px;
+  float: left;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.input_qty label > span:not(.output):last-child {
+  float: right;
+  border-right: 0;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+.input_qty label > span:not(.output):hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+.input_qty label > output {
+  display: inline-block;
+  line-height: inherit;
+  padding: 0;
+}
+.input_qty_sm label {
+  width: 80px;
+  height: 20px;
+  border: 0;
+  line-height: 20px;
+  color: #ccc;
+}
+.input_qty_sm label > span:not(.output) {
+  width: 20px;
+  height: 20px;
+  border: 0 !important;
+}
+.input_qty_sm label > span:not(.output):hover {
+  background-color: transparent;
+  color: #333333;
+}
+.input_qty_sm label output {
+  color: #ccc;
+  font-weight: 600;
+}

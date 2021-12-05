@@ -5,7 +5,7 @@ $('#createProduct').validate({
     name: {
       required: true
     },
-    description: {
+    brand_id: {
       required: true
     },
     price: {
@@ -19,8 +19,8 @@ $('#createProduct').validate({
     name: {
       required: "Name is required",
     },
-    description: {
-      required: "Description is required",
+    brand_id: {
+      required: "Brand is required",
     },
     price: {
       required: "Price is required",
@@ -42,7 +42,10 @@ $('#createProduct').validate({
 
     formData.append("_token", _token)
     formData.append("name", $('#name').val())
+    formData.append("brand_id", $('#brand_id').val())
     formData.append("description", $('#description').val())
+    formData.append("delivery", $('#delivery').val())
+    formData.append("warranty_information", $('#warranty_information').val())
     formData.append("price", $('#price').val())
 
     _.forEach($('.file-upload'), function (fileElement) {
@@ -61,8 +64,8 @@ $('#createProduct').validate({
       .then(function (response) {
         if (response.status) {
           showSuccess('Create product success', () => {
-            console.log(121313)
-          })
+            window.location.href = `${appDomainUrl}/product`
+          }, 500)
         }
       })
       .catch(function (errors) {

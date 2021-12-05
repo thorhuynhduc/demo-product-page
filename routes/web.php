@@ -18,10 +18,23 @@ Route::get('/welcome', function () {
 });
 
 Route::namespace('Web')->group(function () {
-    Route::get('/', 'HomeController@index');
-    Route::get('/cart', 'HomeController@cart');
+    Route::prefix('login')->group(function () {
+        Route::get('/', 'HomeController@login')->name('login');
+        Route::post('/', 'HomeController@doLogin');
+        Route::get('/logout', 'HomeController@logout')->name('logout');
+    });
 
-    Route::prefix('product')->group(function () {
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/search', 'HomeController@search');
+    Route::get('{productId}/detail', 'HomeController@detail')->name('product-detail');
+
+    Route::prefix('cart')->group(function () {
+        Route::get('', 'CartController@index')->name('cart');
+        Route::post('add', 'CartController@add');
+        Route::delete('{productId}', 'CartController@remove');
+    });
+
+    Route::prefix('product')->middleware('admin')->group(function () {
         require __DIR__ . '/Web/product.php';
     });
     Route::prefix('brand')->group(function () {

@@ -1,8 +1,19 @@
 {
-    "/js/app.js": "/js/app.js?id=30539d44214b1959cbf1",
+    "/js/app.js": "/js/app.js?id=73986ca136ec808bbfc5",
     "/css/app.css": "/css/app.css?id=ca064fcdd62580244f31",
+    "/css/home/cart.css": "/css/home/cart.css?id=fe8ab648e0f090786795",
+    "/css/home/index.css": "/css/home/index.css?id=2ed6bcd6fc8c0fc5a0e5",
+    "/css/home/login.css": "/css/home/login.css?id=b88704e2b23db387fdb3",
+    "/css/product/create.css": "/css/product/create.css?id=0e92dfffb5d327e55cd0",
+    "/css/product/detail.css": "/css/product/detail.css?id=f8c034c021c43be2dba4",
+    "/css/product/edit.css": "/css/product/edit.css?id=0e92dfffb5d327e55cd0",
+    "/css/product/list.css": "/css/product/list.css?id=22174c413b1e046d0ddf",
+    "/js/cart/index.js": "/js/cart/index.js?id=bfff1e31152d1438aad0",
+    "/js/home/detail.js": "/js/home/detail.js?id=949e6bcf008682f542f0",
+    "/js/home/index.js": "/js/home/index.js?id=1043bc8f0bb59e581008",
+    "/js/home/login.js": "/js/home/login.js?id=dd2776e7ffc45538547a",
     "/js/lib/jquery-validation.js": "/js/lib/jquery-validation.js?id=19c0fb60b05a22b153fe",
-    "/js/product/create.js": "/js/product/create.js?id=f74cead1a9f234be2d13",
-    "/js/product/index.js": "/js/product/index.js?id=0aa9564274c67b2e9a33",
-    "/js/product/update.js": "/js/product/update.js?id=0f9a37df14a52b061851"
+    "/js/product/create.js": "/js/product/create.js?id=3de60b0ae3e0d1cec586",
+    "/js/product/index.js": "/js/product/index.js?id=9a54d2223d379a36a139",
+    "/js/product/update.js": "/js/product/update.js?id=51c722f24ec0eb3665e8"
 }

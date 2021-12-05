@@ -17,9 +17,11 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->integer('brand_id');
             $table->string('name');
-            $table->string('description');
+            $table->text('description')->nullable();
+            $table->text('delivery')->nullable();
+            $table->text('warranty_information')->nullable();
             $table->integer('price');
-            $table->boolean('available');
+            $table->boolean('available')->default(true);
             $table->softDeletes();
             $table->timestamps();
         });
