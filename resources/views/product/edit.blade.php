@@ -21,7 +21,7 @@
                         {{ $currentUser->name }}
                     </a>
                     <form class="form-inline">
-                        <a href="{{ route('logout') }}" class="btn btn-outline-success my-2 my-sm-0" type="submit">Go to cart</a>
+                        <a href="{{ route('logout') }}" class="btn btn-outline-success my-2 my-sm-0">Logout</a>
                     </form>
                 </nav>
             </div>
