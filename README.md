@@ -1,4 +1,4 @@
-# Demo Product Page
+# Demo basic sell phone
 
 ## Tech
 - Laravel 7.x
