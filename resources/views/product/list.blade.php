@@ -92,8 +92,8 @@
                                 <td class="abc">{{ $product->description }}</td>
                                 <td>${{ $product->price }}</td>
                                 <td>
-                                    <a href="{{ route('product-edit', ['productId' => $product->id]) }}" class="btn btn-primary btn-sm"><i class="far fa-edit"></i></a>
-                                    <a type="button" class="btn btn-danger btn-sm delete-product" data-id="{{ $product->id }}"><i style="color: white" class="far fa-trash-alt"></i></a>
+                                    <a href="{{ route('product-edit', ['productId' => $product->id]) }}" class="btn btn-primary btn-sm">Edit</a>
+                                    <a type="button" class="btn btn-danger btn-sm delete-product" data-id="{{ $product->id }}" style="color: white">Delete</a>
                                 </td>
                             </tr>
                         @endforeach

@@ -32,6 +32,24 @@ const searchProduct = (sortBy = 'created_at', sortType = 'desc') => {
                                     <span class="shop-thumb-price_new">$${value.price}</span>
                                 </div>
                             </a>
+                            
+                            <button class="btn btn-dark btn-rounded mr-1 add-product-to-cart mt-3"
+                                        data-toggle="tooltip"
+                                        data-id="${value.id}"
+                                        data-price="${value.price}"
+                                        data-name="${value.name}"
+                                        data-brand="${value.brand_id}"
+                                        data-image="${appDomainUrl}/storage/${value.images[0].path}"
+                                        data-original-title="Add to cart">
+                                    <i class="fa fa-shopping-cart"></i>
+                                </button>
+                                <button class="btn btn-primary btn-rounded btn-buy-now mt-3"
+                                        data-id="${value.id}"
+                                        data-price="${value.price}"
+                                        data-name="${value.name}"
+                                        data-brand="${value.brand_id}"
+                                        data-image="${appDomainUrl}/storage/${value.images[0].path}"
+                                >Buy Now</button>
                         </div>
                     </div>`
             });

@@ -50,6 +50,12 @@
                         <span>Price</span>
                     </h3>
                     <div class="form-check">
+                        <input class="form-check-input" type="radio" name="price_form_to" value="">
+                        <label class="form-check-label">
+                            All
+                        </label>
+                    </div>
+                    <div class="form-check">
                         <input class="form-check-input" type="radio" name="price_form_to" value="0_25">
                         <label class="form-check-label">
                             Under $25

@@ -30,8 +30,7 @@ const addToCart = (productId, price, quantity = 1, image = '', name = '', brand 
         }
     })
 }
-
-$('.add-product-to-cart').click(function () {
+$(document).on('click', '.add-product-to-cart', function() {
     let quantity = $('#quant').val()
     let productId = $(this).data('id')
     let price = $(this).data('price')
@@ -40,7 +39,8 @@ $('.add-product-to-cart').click(function () {
     let brand = $(this).data('brand')
     addToCart(productId, price, quantity, image, name, brand)
 })
-$('.btn-buy-now').click(function () {
+
+$(document).on('click', '.btn-buy-now', function() {
     let quantity = $('#quant').val()
     let productId = $(this).data('id')
     let price = $(this).data('price')

@@ -47,7 +47,9 @@ $(document).on(
   '[data-role="dynamic-fields"] > .form-inline [data-role="remove"]',
   function(e) {
     e.preventDefault();
-    $(this).closest('.form-inline').remove();
+    if ($('.form-upload-image-product').length > 1) {
+      $(this).closest('.form-inline').remove();
+    }
   }
 );
 // Add button click
@@ -59,7 +61,7 @@ $(document).on(
     var container = $(this).closest('[data-role="dynamic-fields"]');
     new_field_group = container.children().filter('.form-inline:first-child').clone();
     new_field_group.find('label').html('Upload image');
-    new_field_group.find('img').attr('src', 'http://bppl.kkp.go.id/uploads/publikasi/karya_tulis_ilmiah/default.jpg');
+    new_field_group.find('img').attr('src', `${appDomainUrl}/images/default.jpg`);
     new_field_group.find('input').each(function(){
       $(this).val('');
     });

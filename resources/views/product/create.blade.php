@@ -77,7 +77,7 @@
                             <h6>Upload product images</h6>
                             <div class="col-md-6">
                                 <div data-role="dynamic-fields" style="width: 400px;">
-                                    <div class="form-inline form-row">
+                                    <div class="form-inline form-row form-upload-image-product">
                                         <!-- file upload start-->
                                         <div class="mb-2 mr-sm-2 col-sm-5 wrap-input-container">
                                             <label class="custom-file-upload form-control">

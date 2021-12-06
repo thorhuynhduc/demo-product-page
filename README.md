@@ -6,6 +6,7 @@
 - Mysql 5.5
 - docker 20.10.8
 - docker-compose 1.29.2
+- bootstrap 4
 
 ## Setup
 - `echo '127.0.0.1 web.demo.localhost' | sudo tee -a /etc/hosts`
@@ -44,7 +45,9 @@
 
 ## Notes:
 
-- Not yet brand management page... so i seed brand
-- I seed a admin user with info:
+- Brand management page not yet... so i seed brand
+- I seed an admin user with info... you can login and create product with route `/login`:
   - email: `admin@gmail.com`
   - password: `password`
+- Unit test not yet (not have time)
+- Pagination per page default = 5 ... so please create more 5 product. You will see pagination
